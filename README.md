@@ -64,3 +64,6 @@ This integration connects your Fullup sensors to Home Assistant, allowing you to
 ## Support
 
 For issues and feature requests, please use the [GitHub issue tracker](https://github.com/zedissime/fullup/issues).
+
+## Acknowledgment
+This repository is based on and forked from the original custom component from [zedissime](https://github.com/zedissime/ha-fullup). Description and organization of the repository are copied from it and will be modified as the development goes on.

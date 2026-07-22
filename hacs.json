@@ -1,8 +1,8 @@
 {
-  "name": "Fullup",
+  "name": "Fullup Fuel V2 (New API)",
   "render_readme": true,
-  "domains": ["sensor"],
-  "homeassistant": "2026.7.2",
-  "iot_class": "Cloud Polling",
-  "country": ["BE"]
+  "homeassistant": "2026.7.0",
+  "iot_class": "cloud_polling",
+  "country": ["BE"],
+  "codeowners": ["@leomth13"]
 }

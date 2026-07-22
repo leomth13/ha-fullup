@@ -1,15 +1,22 @@
 ## Changelog
 
-### Version 1.0.1
+### Version 2026.07.1
 
-#### New Features
+#### First Version
 
-- Accurately monitor your daily fuel consumption
-
+- Adds every tank sensor you own in a separate device
+- For each device, creates multiple sensors: - Volume (in L)
+                                             - Cavitiy/Sensor temperature
+                                             - Battery percentage
+                                             - Fuel consumption of the week (7-day average)
+                                             - Fuel consumption of the fortnight (14-day average)
+                                             - Last Seen sensor for each device, letting you know when the sensor itself has transmitted data for the last time
+- Automatically pulls from the API at a fixed frequency (15 minutes). _Note: max API usage is 10 calls per rolling hour, sensor updates every hour so this is, to me, the optimal frequency, considering calls made every start/restart._ 
 ### Installation
 
-- Recommended update via HACS
-- Restart Home Assistant after updating
+- Recommended via HACS
+- Add the repository URL in your Custom Repositories in HACS > 3 dots in the upper-right corner > Custom repositories.
+- Restart Home Assistant after installing or updating. Updating via HACS is recommended.
 
 ### Support
 

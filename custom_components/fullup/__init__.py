@@ -1,4 +1,4 @@
-"Fullup V2 Integration"
+"""Fullup V2 Integration"""
 from homeassistant.core import HomeAssistant
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.typing import ConfigType

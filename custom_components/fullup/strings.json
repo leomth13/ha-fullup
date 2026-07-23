@@ -1,0 +1,20 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Fullup Connection",
+        "description": "Please enter the API credentials provided by Fullup (different from your mobile app login). To learn more about this authentication method and how to get your API credentials, please refer to [GitHub README](https://github.com/leomth13/ha-fullup#readme)",
+        "data": {
+          "title": "Integration Name",
+          "username": "API Username",
+          "password": "API Password / Key"
+        },
+        "data_description": {
+          "title": "Custom name for this entry in Home Assistant (all detected devices will be grouped under this unique entry).",
+          "username": "Your API username given by Fullup support.",
+          "password": "Your API secret key or password."
+        }
+      }
+    }
+  }
+}

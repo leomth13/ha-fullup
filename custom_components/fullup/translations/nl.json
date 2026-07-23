@@ -1,1 +1,28 @@
-
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Fullup Verbinding",
+        "description": "Voer de API-inloggegevens in die zijn verstrekt door Fullup (verschillend van uw mobiele app-inloggegevens). Om meer te weten te komen over deze authenticatiemethode en hoe u uw API-inloggegevens kunt verkrijgen, raadpleeg de [GitHub README](https://github.com/leomth13/ha-fullup#readme)",
+        "data": {
+          "title": "Naam van integratie",
+          "username": "API-gebruikersnaam",
+          "password": "API-wachtwoord / Sleutel"
+        },
+        "data_description": {
+          "title": "Aangepaste naam voor deze vermelding in Home Assistant (alle gedetecteerde apparaten worden gegroepeerd onder deze unieke vermelding).",
+          "username": "Uw API-gebruikersnaam verstrekt door Fullup support.",
+          "password": "Uw geheime API-sleutel of wachtwoord."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Kan geen verbinding maken met de Fullup API-server.",
+      "invalid_auth": "Ongeldige API-gebruikersnaam of wachtwoord.",
+      "unknown": "Er is een onverwachte fout opgetreden."
+    },
+    "abort": {
+      "already_configured": "Dit Fullup-account is al geconfigureerd."
+    }
+  }
+}

@@ -5,7 +5,7 @@
         "title": "Fullup Connection",
         "description": "Please enter the API credentials provided by Fullup (different from your mobile app login). To learn more about this authentication method and how to get your API credentials, please refer to the [GitHub README](https://github.com/leomth13/ha-fullup#readme)",
         "data": {
-          "title": "Entry Name",
+          "title": "Integration Name",
           "username": "API Username",
           "password": "API Password / Key"
         },
@@ -23,6 +23,28 @@
     },
     "abort": {
       "already_configured": "This Fullup account is already configured."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "remaining_volume": {
+        "name": "Remaining volume"
+      },
+      "battery": {
+        "name": "Battery"
+      },
+      "consumption_7d": {
+        "name": "7-day consumption"
+      },
+      "consumption_14d": {
+        "name": "14-day consumption"
+      },
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "temperature": {
+        "name": "Tank temperature"
+      }
     }
   }
 }

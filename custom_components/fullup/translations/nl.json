@@ -36,8 +36,8 @@
       "consumption_7d": {
         "name": "Verbruik 7 dagen"
       },
-      "consumption_14d": {
-        "name": "Verbruik 14 dagen"
+      "consumption_15d": {
+        "name": "Verbruik 15 dagen"
       },
       "last_seen": {
         "name": "Laatst gezien"

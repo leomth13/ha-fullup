@@ -28,7 +28,6 @@ SCAN_INTERVAL = timedelta(minutes=15)
 async def async_setup_entry(
     hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
 ):
-    """Configuration des entités Fullup."""
     username = entry.data["username"]
     password = entry.data["password"]
 
@@ -77,7 +76,7 @@ async def async_setup_entry(
 
         entities.append(FullupVolumeSensor(coordinator, asset, device_info))
         entities.append(FullupConsumptionSensor(coordinator, asset, "7", device_info))
-        entities.append(FullupConsumptionSensor(coordinator, asset, "14", device_info))
+        entities.append(FullupConsumptionSensor(coordinator, asset, "15", device_info))
         entities.append(FullupBatterySensor(coordinator, asset, device_info))
         entities.append(FullupTemperatureSensor(coordinator, asset, device_info))
         entities.append(FullupLastSeenSensor(coordinator, asset, device_info))
@@ -86,12 +85,8 @@ async def async_setup_entry(
 
 
 class BaseFullupSensor(CoordinatorEntity, SensorEntity):
-    """Classe de base pour toutes les entités Fullup."""
-
-    _attr_has_entity_name = True  # Active le nommage automatique [Nom Appareil] + [Traductions]
-
+    _attr_has_entity_name = True
     def __init__(self, coordinator, asset, device_info):
-        """Initialisation du capteur."""
         super().__init__(coordinator)
         self._asset = asset
         self._attr_device_info = device_info
@@ -107,18 +102,14 @@ class BaseFullupSensor(CoordinatorEntity, SensorEntity):
 
     @property
     def available(self) -> bool:
-        """Garde la dernière valeur connue si l'API tombe."""
         return True
 
     @property
     def should_poll(self) -> bool:
-        """Les mises à jour sont gérées par le coordinator."""
         return False
 
 
 class FullupVolumeSensor(BaseFullupSensor):
-    """Capteur du volume restant."""
-
     _sensor_type = "remaining_volume"
     _attr_translation_key = "remaining_volume"
     _attr_native_unit_of_measurement = UnitOfVolume.LITERS
@@ -135,8 +126,6 @@ class FullupVolumeSensor(BaseFullupSensor):
 
 
 class FullupConsumptionSensor(BaseFullupSensor):
-    """Capteurs de consommation (7 jours & 14 jours)."""
-
     def __init__(self, coordinator, asset, days, device_info):
         self._days = days
         self._sensor_type = f"consumption_{days}d"
@@ -156,8 +145,6 @@ class FullupConsumptionSensor(BaseFullupSensor):
 
 
 class FullupBatterySensor(BaseFullupSensor):
-    """Capteur de batterie."""
-
     _sensor_type = "battery"
     _attr_translation_key = "battery"
     _attr_native_unit_of_measurement = PERCENTAGE
@@ -175,8 +162,6 @@ class FullupBatterySensor(BaseFullupSensor):
 
 
 class FullupTemperatureSensor(BaseFullupSensor):
-    """Capteur de température de la cuve."""
-
     _sensor_type = "temperature"
     _attr_translation_key = "temperature"
     _attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
@@ -194,8 +179,6 @@ class FullupTemperatureSensor(BaseFullupSensor):
 
 
 class FullupLastSeenSensor(BaseFullupSensor):
-    """Capteur de dernière vue (horodatage/texte)."""
-
     _sensor_type = "last_seen"
     _attr_translation_key = "last_seen"
 

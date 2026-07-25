@@ -1,6 +1,6 @@
 ## Changelog
 
-### Version 2026.07.1
+### Version 2026.07.2
 
 #### First Version
 

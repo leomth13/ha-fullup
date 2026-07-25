@@ -36,8 +36,8 @@
       "consumption_7d": {
         "name": "Verbrauch 7 Tage"
       },
-      "consumption_14d": {
-        "name": "Verbrauch 14 Tage"
+      "consumption_15d": {
+        "name": "Verbrauch 15 Tage"
       },
       "last_seen": {
         "name": "Zuletzt gesehen"

@@ -5,7 +5,7 @@
         "title": "Connexion Fullup",
         "description": "Veuillez entrer les identifiants API fournis par Fullup (différents de vos identifiants d'application mobile). Pour en savoir plus sur cette méthode d'authentification et comment obtenir vos identifiants API, veuillez consulter le [README GitHub](https://github.com/leomth13/ha-fullup#readme)",
         "data": {
-          "title": "Nom de l'entrée",
+          "title": "Nom de l'intégration",
           "username": "Identifiant / Utilisateur API",
           "password": "Mot de passe / Clé API"
         },
@@ -23,6 +23,28 @@
     },
     "abort": {
       "already_configured": "Ce compte Fullup est déjà configuré."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "remaining_volume": {
+        "name": "Volume restant"
+      },
+      "battery": {
+        "name": "Batterie"
+      },
+      "consumption_7d": {
+        "name": "Consommation 7 jours"
+      },
+      "consumption_14d": {
+        "name": "Consommation 14 jours"
+      },
+      "last_seen": {
+        "name": "Dernière connexion"
+      },
+      "temperature": {
+        "name": "Température"
+      }
     }
   }
 }

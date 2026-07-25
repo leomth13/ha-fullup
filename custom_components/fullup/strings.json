@@ -16,5 +16,28 @@
         }
       }
     }
+  },
+  "entity": {
+    "sensor": {
+      "remaining_volume": {
+        "name": "Remaining volume"
+      },
+      "battery": {
+        "name": "Battery"
+      },
+      "consumption_7d": {
+        "name": "7-day consumption"
+      },
+      "consumption_14d": {
+        "name": "14-day consumption"
+      },
+      "last_seen": {
+        "name": "Last seen"
+      },
+      "temperature": {
+        "name": "Tank temperature"
+      }
+    }
   }
 }
+

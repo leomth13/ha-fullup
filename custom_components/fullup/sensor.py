@@ -1,29 +1,40 @@
 """Sensor Configuration for Fullup V2 Integration"""
-from homeassistant.components.sensor import SensorEntity
-from homeassistant.config_entries import ConfigEntry
-from homeassistant.core import HomeAssistant
-from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, CoordinatorEntity, UpdateFailed
-from homeassistant.helpers.aiohttp_client import async_get_clientsession
-from homeassistant.helpers.device_registry import DeviceInfo
 import base64
 from datetime import timedelta
 import logging
+
+from homeassistant.components.sensor import (
+    SensorDeviceClass,
+    SensorEntity,
+    SensorStateClass,
+)
+from homeassistant.config_entries import ConfigEntry
+from homeassistant.const import PERCENTAGE, UnitOfTemperature, UnitOfVolume
+from homeassistant.core import HomeAssistant
+from homeassistant.helpers.aiohttp_client import async_get_clientsession
+from homeassistant.helpers.device_registry import DeviceInfo
+from homeassistant.helpers.entity_platform import AddEntitiesCallback
+from homeassistant.helpers.update_coordinator import (
+    CoordinatorEntity,
+    DataUpdateCoordinator,
+    UpdateFailed,
+)
 
 _LOGGER = logging.getLogger(__name__)
 DOMAIN = "fullup"
 SCAN_INTERVAL = timedelta(minutes=15)
 
-async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback):
+
+async def async_setup_entry(
+    hass: HomeAssistant, entry: ConfigEntry, async_add_entities: AddEntitiesCallback
+):
+    """Configuration des entités Fullup."""
     username = entry.data["username"]
     password = entry.data["password"]
 
     async def update_data():
         auth = base64.b64encode(f"{username}:{password}".encode()).decode()
-        headers = {
-            "Authorization": f"Basic {auth}",
-            "accept": "application/json"
-        }
+        headers = {"Authorization": f"Basic {auth}", "accept": "application/json"}
         try:
             session = async_get_clientsession(hass)
             url = "https://pro-api.fuel-it.io/v2/contenant/allassets"
@@ -36,7 +47,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
             raise UpdateFailed(f"Connection to API failed. Details: {e}")
 
     coordinator = DataUpdateCoordinator(
-        hass, _LOGGER, name=DOMAIN, update_method=update_data, update_interval=SCAN_INTERVAL
+        hass,
+        _LOGGER,
+        name=DOMAIN,
+        update_method=update_data,
+        update_interval=SCAN_INTERVAL,
     )
     await coordinator.async_config_entry_first_refresh()
 
@@ -62,19 +77,26 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 
         entities.append(FullupVolumeSensor(coordinator, asset, device_info))
         entities.append(FullupConsumptionSensor(coordinator, asset, "7", device_info))
-        entities.append(FullupConsumptionSensor(coordinator, asset, "15", device_info))
+        entities.append(FullupConsumptionSensor(coordinator, asset, "14", device_info))
         entities.append(FullupBatterySensor(coordinator, asset, device_info))
         entities.append(FullupTemperatureSensor(coordinator, asset, device_info))
         entities.append(FullupLastSeenSensor(coordinator, asset, device_info))
 
     async_add_entities(entities)
 
+
 class BaseFullupSensor(CoordinatorEntity, SensorEntity):
+    """Classe de base pour toutes les entités Fullup."""
+
+    _attr_has_entity_name = True  # Active le nommage automatique [Nom Appareil] + [Traductions]
+
     def __init__(self, coordinator, asset, device_info):
+        """Initialisation du capteur."""
         super().__init__(coordinator)
         self._asset = asset
         self._attr_device_info = device_info
         self._attr_unique_id = f"fullup_{asset.get('uid')}_{self._sensor_type}"
+
         devices = asset.get("devices") or [{}]
         device = devices[0] if devices else {}
         self._attr_extra_state_attributes = {
@@ -84,22 +106,25 @@ class BaseFullupSensor(CoordinatorEntity, SensorEntity):
         }
 
     @property
-    def available(self):
-        #return self.coordinator.last_update_success #for unavailable status when no API available, but need for a new call after API back online!
-        return True #Will keep last value even when API is down, and will update when new value arrives, even after API break.
+    def available(self) -> bool:
+        """Garde la dernière valeur connue si l'API tombe."""
+        return True
+
     @property
-    def should_poll(self):
+    def should_poll(self) -> bool:
+        """Les mises à jour sont gérées par le coordinator."""
         return False
 
+
 class FullupVolumeSensor(BaseFullupSensor):
-    _sensor_type = "volume"
-    def __init__(self, coordinator, asset, device_info):
-        super().__init__(coordinator, asset, device_info)
-        self._attr_name = f"{asset.get('name', 'Tank')} Volume"
-        self._attr_native_unit_of_measurement = "L"
-        self._attr_device_class = "volume_storage"
-        self._attr_state_class = "measurement"
-        self._attr_suggested_display_precision = 0
+    """Capteur du volume restant."""
+
+    _sensor_type = "remaining_volume"
+    _attr_translation_key = "remaining_volume"
+    _attr_native_unit_of_measurement = UnitOfVolume.LITERS
+    _attr_device_class = SensorDeviceClass.VOLUME_STORAGE
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_suggested_display_precision = 0
 
     @property
     def native_value(self):
@@ -108,14 +133,18 @@ class FullupVolumeSensor(BaseFullupSensor):
                 return a.get("volume")
         return None
 
+
 class FullupConsumptionSensor(BaseFullupSensor):
+    """Capteurs de consommation (7 jours & 14 jours)."""
+
     def __init__(self, coordinator, asset, days, device_info):
         self._days = days
-        self._sensor_type = f"conso_{days}d"
+        self._sensor_type = f"consumption_{days}d"
+        self._attr_translation_key = f"consumption_{days}d"
         super().__init__(coordinator, asset, device_info)
-        self._attr_name = f"{asset.get('name', 'Tank')} Consumption {days} days"
-        self._attr_native_unit_of_measurement = "L"
-        self._attr_state_class = "total"
+
+        self._attr_native_unit_of_measurement = UnitOfVolume.LITERS
+        self._attr_state_class = SensorStateClass.TOTAL
         self._attr_suggested_display_precision = 0
 
     @property
@@ -125,14 +154,15 @@ class FullupConsumptionSensor(BaseFullupSensor):
                 return a.get(f"consumption_{self._days}_days")
         return None
 
+
 class FullupBatterySensor(BaseFullupSensor):
+    """Capteur de batterie."""
+
     _sensor_type = "battery"
-    def __init__(self, coordinator, asset, device_info):
-        super().__init__(coordinator, asset, device_info)
-        self._attr_name = f"{asset.get('name', 'Tank')} Battery"
-        self._attr_native_unit_of_measurement = "%"
-        self._attr_device_class = "battery"
-        self._attr_state_class = "measurement"
+    _attr_translation_key = "battery"
+    _attr_native_unit_of_measurement = PERCENTAGE
+    _attr_device_class = SensorDeviceClass.BATTERY
+    _attr_state_class = SensorStateClass.MEASUREMENT
 
     @property
     def native_value(self):
@@ -143,15 +173,16 @@ class FullupBatterySensor(BaseFullupSensor):
                     return devices[0].get("battery")
         return None
 
+
 class FullupTemperatureSensor(BaseFullupSensor):
+    """Capteur de température de la cuve."""
+
     _sensor_type = "temperature"
-    def __init__(self, coordinator, asset, device_info):
-        super().__init__(coordinator, asset, device_info)
-        self._attr_name = f"{asset.get('name', 'Tank')} Temperature"
-        self._attr_native_unit_of_measurement = "°C"
-        self._attr_device_class = "temperature"
-        self._attr_state_class = "measurement"
-        self._attr_suggested_display_precision = 0
+    _attr_translation_key = "temperature"
+    _attr_native_unit_of_measurement = UnitOfTemperature.CELSIUS
+    _attr_device_class = SensorDeviceClass.TEMPERATURE
+    _attr_state_class = SensorStateClass.MEASUREMENT
+    _attr_suggested_display_precision = 0
 
     @property
     def native_value(self):
@@ -161,11 +192,12 @@ class FullupTemperatureSensor(BaseFullupSensor):
                 return temps[0] if temps else None
         return None
 
+
 class FullupLastSeenSensor(BaseFullupSensor):
+    """Capteur de dernière vue (horodatage/texte)."""
+
     _sensor_type = "last_seen"
-    def __init__(self, coordinator, asset, device_info):
-        super().__init__(coordinator, asset, device_info)
-        self._attr_name = f"{asset.get('name', 'Tank')} Last Seen"
+    _attr_translation_key = "last_seen"
 
     @property
     def native_value(self):

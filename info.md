@@ -5,7 +5,8 @@
 #### First Version
 
 - Adds every tank sensor you own in separate devices, under one unified config entry
-- For each device, creates multiple sensors:
+
+For each device, creates multiple sensors:
 - Volume (in L)
 - Cavitiy/Sensor temperature
 - Battery percentage
@@ -21,4 +22,4 @@
 
 ### Support
 
-For any issues or suggestions, please open an issue on the GitHub repository.
+For any issues or suggestions, please open an issue on the [GitHub repository](https://github.com/leomth13/ha-fullup/issues) or open a [Pull request](https://github.com/leomth13/ha-fullup/pulls).

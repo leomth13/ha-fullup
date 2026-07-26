@@ -10,13 +10,15 @@ class FullupConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
 
     async def async_step_user(self, user_input=None):
         if user_input is not None:
-            title = user_input.pop("title", "Fullup Tanks")
+            title = user_input.pop("title", None)
+            if not title or not title.strip():
+                title = "Fullup Tanks"
             return self.async_create_entry(title=title, data=user_input)
 
         return self.async_show_form(
             step_id="user",
             data_schema=vol.Schema({
-                vol.Optional("title", default="Fullup Tanks"): str,
+                vol.Optional("title"): str,
                 vol.Required("username"): str,
                 vol.Required("password"): str,
             }),

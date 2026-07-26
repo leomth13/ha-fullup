@@ -2,6 +2,22 @@
 
 This integration allows you to monitor your [Fullup](https://fullup.io/) fuel tank sensors in Home Assistant, using the new REST API recently launched by Fullup alongside the new client interface.
 
+## Roadmap 🗺️
+
+### Launch release 2026.07.2 🚀
+- [x] Rebuild Fullup Integration in Home Assistant with the new REST API deployed since July 1, 2026
+- [x] Ship all basic features and sensors useful for a quick and integrated look at tanks sensors
+- [x] Polishing onboarding process, adding translations and keys for translations in French, Dutch, German and English
+
+### Next features to think about
+- [ ] Refining translations for better sensor naming (if needed, low-priority)
+- [ ] Adding checks to prevent double entry for the same account
+- [ ] More explicit errors gestion and display during onboarding
+- [ ] New entities for sensors: daily consumption (depends on API fix or manual entities), days before failure,...
+- [ ] Hassle-free automation system for low fuel alerts
+
+Other suggestions are welcomed in the [Issues section](https://github.com/leomth13/ha-fullup/issues) (use a `suggestion` tag or so).
+
 ## What is Fullup?
 
 [Fullup](https://fullup.io/) is a smart fuel tank monitoring system. It features a wireless sensor that attaches to your fuel tank and connects to the Fullup cloud service via a modem connected to your ISP router. This setup allows for real-time monitoring of your fuel levels.
@@ -21,7 +37,7 @@ This integration connects your Fullup sensors to Home Assistant, allowing you to
 
 ## API Information
 
-Since July 1st 2026, Fullup changed its whole IoT infrastructure (URLs, Mobile App, API,...). To use this integration (or replace the [previous one](https://github.com/zedissime/ha-fullup)), you need to get access to the Developer Portal of Fourdata (the new IoT infrastructure partner). To do this, you can email the Fullup Support at one of the following addresses:
+Since July 1, 2026, Fullup changed its whole IoT infrastructure (URLs, Mobile App, API,...). To use this integration (or replace the [previous one](https://github.com/zedissime/ha-fullup)), you need to get access to the Developer Portal of Fourdata (the new IoT infrastructure partner). To do this, you can email the Fullup Support at one of the following addresses:
 - support@fullup.be
 - migration@fullup.be
 

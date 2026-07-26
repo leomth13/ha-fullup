@@ -24,27 +24,5 @@
     "abort": {
       "already_configured": "Dieses Fullup-Konto ist bereits konfiguriert."
     }
-  },
-  "entity": {
-    "sensor": {
-      "remaining_volume": {
-        "name": "Restvolumen"
-      },
-      "battery": {
-        "name": "Batterie"
-      },
-      "consumption_7d": {
-        "name": "Verbrauch 7 Tage"
-      },
-      "consumption_15d": {
-        "name": "Verbrauch 15 Tage"
-      },
-      "last_seen": {
-        "name": "Zuletzt gesehen"
-      },
-      "temperature": {
-        "name": "Temperatur"
-      }
-    }
   }
 }

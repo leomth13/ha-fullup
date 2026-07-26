@@ -24,27 +24,5 @@
     "abort": {
       "already_configured": "Dit Fullup-account is al geconfigureerd."
     }
-  },
-  "entity": {
-    "sensor": {
-      "remaining_volume": {
-        "name": "Resterend volume"
-      },
-      "battery": {
-        "name": "Batterij"
-      },
-      "consumption_7d": {
-        "name": "Verbruik 7 dagen"
-      },
-      "consumption_15d": {
-        "name": "Verbruik 15 dagen"
-      },
-      "last_seen": {
-        "name": "Laatst gezien"
-      },
-      "temperature": {
-        "name": "Temperatuur"
-      }
-    }
   }
 }

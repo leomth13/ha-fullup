@@ -1,6 +1,22 @@
-# Fullup V2 Integration for Home Assistant
+# Fullup V2 Integration for Home Assistant ⛽️
 
 This integration allows you to monitor your [Fullup](https://fullup.io/) fuel tank sensors in Home Assistant, using the new REST API recently launched by Fullup alongside the new client interface.
+
+## Roadmap 🗺️
+
+### Launch release 2026.07.2 🚀
+- [x] Rebuild Fullup Integration in Home Assistant with the new REST API deployed since July 1, 2026
+- [x] Ship all basic features and sensors useful for a quick and integrated look at tanks sensors
+- [x] Polishing onboarding process, adding translations and keys for translations in French, Dutch, German and English
+
+### Next features to think about
+- [ ] Refining translations for better sensor naming (if needed, low-priority)
+- [ ] Adding checks to prevent double entry for the same account
+- [ ] More explicit errors gestion and display during onboarding
+- [ ] New entities for sensors: daily consumption (depends on API fix or manual entities), days before failure,...
+- [ ] Hassle-free automation system for low fuel alerts
+
+Other suggestions are welcomed in the [Issues section](https://github.com/leomth13/ha-fullup/issues) (use a `suggestion` tag or so).
 
 ## What is Fullup?
 
@@ -21,11 +37,13 @@ This integration connects your Fullup sensors to Home Assistant, allowing you to
 
 ## API Information
 
-Since July 1st 2026, Fullup changed its whole IoT infrastructure (URLs, Mobile App, API,...). To use this integration (or replace the [previous one](https://github.com/zedissime/ha-fullup)), you need to get access to the Developer Portal of Fourdata (the new IoT infrastructure partner). To do this, you can email the Fullup Support at one of the following addresses:
+Since July 1, 2026, Fullup changed its whole IoT infrastructure (URLs, Mobile App, API,...). To use this integration (or replace the [previous one](https://github.com/zedissime/ha-fullup)), you need to get access to the Developer Portal of Fourdata (the new IoT infrastructure partner). To do this, you can email the Fullup Support at one of the following addresses:
 - support@fullup.be
 - migration@fullup.be
 
 The latter worked for myself quite rapidly. Please be kind and respectful with the person you will write to, simply explain that you would like to ask for API access to use this integration.
+
+To get more information about the API credentials and how to retrieve them, see the [api_guide.md](https://github.com/leomth13/ha-fullup/blob/master/api_guide.md) file.
 
 _Note for the future: We still need Fullup support to clarify the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st 2027, after that you will need to pay a 24€ fee per year. This apparently doesn't relate to the [Developer Portal access](https://auth.fourdata.io/login), which is granted for free in this case of personal use. Still, if a fair policy consists in a certain fee to keep access to the API, it will be indicated on this page_
 

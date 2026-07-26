@@ -1,4 +1,4 @@
-# Fullup V2 Integration for Home Assistant
+# Fullup V2 Integration for Home Assistant ⛽️
 
 This integration allows you to monitor your [Fullup](https://fullup.io/) fuel tank sensors in Home Assistant, using the new REST API recently launched by Fullup alongside the new client interface.
 

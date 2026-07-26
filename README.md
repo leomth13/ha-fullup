@@ -27,6 +27,8 @@ Since July 1st 2026, Fullup changed its whole IoT infrastructure (URLs, Mobile A
 
 The latter worked for myself quite rapidly. Please be kind and respectful with the person you will write to, simply explain that you would like to ask for API access to use this integration.
 
+To get more information about the API credentials and how to retrieve them, see the [api_guide.md](https://github.com/leomth13/ha-fullup/blob/master/api_guide.md) file.
+
 _Note for the future: We still need Fullup support to clarify the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st 2027, after that you will need to pay a 24€ fee per year. This apparently doesn't relate to the [Developer Portal access](https://auth.fourdata.io/login), which is granted for free in this case of personal use. Still, if a fair policy consists in a certain fee to keep access to the API, it will be indicated on this page_
 
 ## ⚠️ Important Note for V1 Users

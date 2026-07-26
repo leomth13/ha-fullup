@@ -12,7 +12,7 @@ This integration connects your Fullup sensors to Home Assistant, allowing you to
 
 - Add every sensor linked to your account in Home Assistant, if you have multiple sensors
 - Monitor fuel levels in real-time (data from sensor to modem are pushed every hour, integration pulls from API every 15 minutes)
-- Track fuel consumption on a 7 or 14-day average
+- Track fuel consumption on a 7 or 15-day average
 - Monitor tank temperature
 - Monitor battery levels of your Fullup sensors
 - View historical data and consumption trends

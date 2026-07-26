@@ -17,6 +17,7 @@ This integration connects your Fullup sensors to Home Assistant, allowing you to
 - Monitor battery levels of your Fullup sensors
 - View historical data and consumption trends
 - Monitor sensors communication with a Last Seen sensor, giving you the last time the sensor talked to the modem
+- If connection with API is lost (Internet connection offline, API down/in maintenance,...), logs will appear and sensors will keep their last updated value until API is reachable again
 
 ## API Information
 

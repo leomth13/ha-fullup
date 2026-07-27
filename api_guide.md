@@ -1,6 +1,6 @@
 # How to get API keys with the new Fullup Interface
 
-## Important note on Fullup Subscription
+## ⚠️ Important note on Fullup Subscription ⚠️
 
 Fullup Support clarified the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st, 2027. After that, a 24€ annual fee will apply. This fee applies to all services they offer, including Client Portal access, [Developer Portal access](https://auth.fourdata.io/login) (granted for free in this case of personal use), API usage, and data access from your sensors. If you want to retain access to your data and the entire new suite of tools, **you will need to pay the 24€/year fee**.
 

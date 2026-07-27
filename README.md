@@ -45,7 +45,11 @@ The latter worked for myself quite rapidly. Please be kind and respectful with t
 
 To get more information about the API credentials and how to retrieve them, see the [api_guide.md](https://github.com/leomth13/ha-fullup/blob/master/api_guide.md) file.
 
-_Note for the future: We still need Fullup support to clarify the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st 2027, after that you will need to pay a 24€ fee per year. This apparently doesn't relate to the [Developer Portal access](https://auth.fourdata.io/login), which is granted for free in this case of personal use. Still, if a fair policy consists in a certain fee to keep access to the API, it will be indicated on this page_
+### Fullup Subscription
+
+Fullup Support clarified the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st, 2027. After that, a 24€ annual fee will apply. This fee applies to all services they offer, including Client Portal access, [Developer Portal access](https://auth.fourdata.io/login) (granted for free in this case of personal use), API usage, and data access from your sensors. If you want to retain access to your data and the entire new suite of tools, **you will need to pay the 24€/year fee**.
+
+*Note that the Developer Portal is usually a paid service, but Fullup agrees to upgrade your personal account to a professional account for free in this case. This upgrade will not incur any additional fees, but to retain access to all features, the 24€ fee must be paid.*
 
 ## ⚠️ Important Note for V1 Users
 

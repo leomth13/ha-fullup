@@ -1,4 +1,11 @@
 # How to get API keys with the new Fullup Interface
+
+## ⚠️ Important note on Fullup Subscription ⚠️
+
+Fullup Support clarified the new billing service associated with the [Client Portal access](client.fullup.be), which is free until January 1st, 2027. After that, a 24€ annual fee will apply. This fee applies to all services they offer, including Client Portal access, [Developer Portal access](https://auth.fourdata.io/login) (granted for free in this case of personal use), API usage, and data access from your sensors. If you want to retain access to your data and the entire new suite of tools, **you will need to pay the 24€/year fee**.
+
+*Note that the Developer Portal is usually a paid service, but Fullup agrees to upgrade your personal account to a professional account for free in this case. This upgrade will not incur any additional fees, but to retain access to all features, the 24€ fee must be paid.*
+
 ## Client Interface and Developer Interface
 Since July 1 2026, Fullup migrated its IoT systems to a new set of tools. Mobile app, URLs and API used in the past are now deprecated and replaced by a whole new suite in collaboration with Fourdata. If you migrated correctly your account
 (you got at least 2 emails from Fullup regarding this matter), you should have access to the *Client Interface* available at https://client.fullup.be.
